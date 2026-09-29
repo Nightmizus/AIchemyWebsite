@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111713" />
+    <meta
+      name="description"
+      content="炼丹社 AIchemy · 以数据为料，以算力为火，以模型为丹。全屏像素科技丹炉。"
+    />
+    <title>炼丹社 AIchemy · 像素炼丹炉</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="./assets/unifont-pixel.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="./styles.css?v=blast-5" />
+    <script src="./furnace.js?v=blast-5" defer></script>
+    <script src="./app.js?v=blast-5" defer></script>
+  </head>
+  <body>
+    <canvas id="lab-backdrop" aria-hidden="true"></canvas>
+    <main>
+      <section class="scene" id="top" aria-label="炼丹社 AIchemy 像素实验室">
+        <header class="site-nav" aria-hidden="true" inert>
+          <div class="site-nav-inner">
+            <span class="site-brand-slot" aria-hidden="true"></span>
+            <nav class="site-links" aria-label="页面导航">
+              <a href="#services"
+                ><span class="site-label-full">正在运行的服务</span
+                ><span class="site-label-short">服务</span></a
+              >
+              <a href="#activities"
+                ><span class="site-label-full">社团活动</span
+                ><span class="site-label-short">活动</span></a
+              >
+              <a href="#join"
+                ><span class="site-label-full">加入社团</span
+                ><span class="site-label-short">加入</span></a
+              >
+              <a href="#community"
+                ><span class="site-label-full">社区</span
+                ><span class="site-label-short">社区</span></a
+              >
+            </nav>
+          </div>
+        </header>
+        <header class="hero-title-space">
+          <a
+            class="hero-brand"
+            href="#top"
+            aria-label="炼丹社 AIchemy，返回首页"
+          >
+            <h1>
+              <span class="title-cn">炼丹社</span
+              ><span class="title-en">AIchemy</span>
+            </h1>
+            <p>硬核AI研究社团@sdsz</p>
+          </a>
+        </header>
+        <canvas
+          id="furnace"
+          data-reactor="blast"
+          role="img"
+          aria-label="铺满屏幕的像素 AI 实验室。中央工业高炉燃烧着橙色炉火，悬浮模型核心缓缓旋转；机械臂伸向模型。四周有多屏工作台、数据瓶架、存储卡、服务器和冷却装置，上方排风扇转动，管线中的数据持续流动。"
+        ></canvas>
+        <div class="vignette" aria-hidden="true"></div>
+        <div class="scanlines" aria-hidden="true"></div>
+
+        <nav class="scene-nav" aria-label="社团导航">
+          <a class="nav-window nav-services" href="#services">
+            <span class="nav-titlebar"
+              ><i></i><span>SERVICES.APP</span
+              ><span class="nav-lights" aria-hidden="true"
+                ><b>−</b><b>□</b><b>×</b></span
+              ></span
+            >
+            <span class="nav-body"
+              ><svg viewBox="0 0 32 32" aria-hidden="true">
+                <path
+                  d="M5 5h22v9H5zM5 18h22v9H5zM10 9h2M10 22h2M17 9h5M17 22h5"
+                /></svg
+              ><span
+                ><strong><span>正在运行</span><span>的服务</span></strong
+                ><small>社团工具与应用</small></span
+              ><span class="nav-arrow" aria-hidden="true">↓</span></span
+            ></a
+          >
+          <a class="nav-window nav-activities" href="#activities">
+            <span class="nav-titlebar"
+              ><i></i><span>EVENTS.EXE</span
+              ><span class="nav-lights" aria-hidden="true"
+                ><b>−</b><b>□</b><b>×</b></span
+              ></span
+            >
+            <span class="nav-body"
+              ><svg viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M4 7h15v12H9l-5 5zM22 11h6v15l-5-4h-9M9 12h5" /></svg
+              ><span
+                ><strong>社团活动</strong
+                ><small>交流 · 分享 · 共创</small></span
+              ><span class="nav-arrow" aria-hidden="true">↓</span></span
+            ></a
+          >
+          <a class="nav-window nav-join" href="#join">
+            <span class="nav-titlebar"
+              ><i></i><span>JOIN.EXE</span
+              ><span class="nav-lights" aria-hidden="true"
+                ><b>−</b><b>□</b><b>×</b></span
+              ></span
+            >
+            <span class="nav-body"
+              ><svg viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M5 5h22v16h-9l-6 6v-6H5zM10 11h12M10 15h8" /></svg
+              ><span
+                ><strong>加入社团！</strong><small>添加社长微信</small></span
+              ><span class="nav-arrow" aria-hidden="true">↓</span></span
+            ></a
+          >
+        </nav>
+        <div
+          class="console-dock"
+          aria-label="固定训练仪表"
+          title="模拟训练数据"
+        >
+          <div class="holograms" id="holograms" aria-label="训练模拟监测面板">
+            <section
+              class="hud-window hud-training"
+              data-window="training"
+              aria-labelledby="training-title"
+            >
+              <header class="hud-titlebar">
+                <h2 id="training-title">
+                  <i class="hud-indicator" aria-hidden="true"></i>TRAIN.EXE
+                </h2>
+                <span class="hud-mount" aria-hidden="true">▪</span>
+              </header>
+              <div class="hud-body" id="training-content">
+                <div class="epoch-line">
+                  <strong id="hud-epoch">06</strong
+                  ><span>/ 24 <small>EPOCHS</small></span
+                  ><span id="hud-progress-label">25.0%</span>
+                </div>
+                <div class="hud-progress" aria-hidden="true">
+                  <span id="hud-progress-fill"></span>
+                </div>
+                <span id="hud-train-state" class="sr-only">参数更新中</span>
+              </div>
+            </section>
+            <section
+              class="hud-window hud-loss"
+              data-window="loss"
+              aria-labelledby="loss-title"
+            >
+              <header class="hud-titlebar">
+                <h2 id="loss-title">
+                  <i class="hud-indicator" aria-hidden="true"></i>LOSS.MONITOR
+                </h2>
+                <span class="hud-mount" aria-hidden="true">▪</span>
+              </header>
+              <div class="hud-body" id="loss-content">
+                <div class="loss-line">
+                  <strong id="hud-loss">0.813</strong
+                  ><span aria-hidden="true">↘</span>
+                </div>
+                <canvas
+                  id="hud-loss-chart"
+                  width="420"
+                  height="112"
+                  role="img"
+                  aria-label="模拟训练损失与验证损失逐步下降的曲线"
+                ></canvas>
+              </div>
+            </section>
+            <section
+              class="hud-window hud-compute"
+              data-window="compute"
+              aria-labelledby="compute-title"
+            >
+              <header class="hud-titlebar">
+                <h2 id="compute-title">
+                  <i class="hud-indicator" aria-hidden="true"></i>COMPUTE.SYS
+                </h2>
+                <span class="hud-mount" aria-hidden="true">▪</span>
+              </header>
+              <div class="hud-body" id="compute-content">
+                <div class="resource-line">
+                  <span>GPU</span
+                  ><strong id="hud-gpu">92<small>%</small></strong>
+                </div>
+                <div
+                  class="segment-meter"
+                  id="hud-gpu-meter"
+                  aria-hidden="true"
+                ></div>
+                <div class="memory-line">
+                  <span>VRAM</span><span><b id="hud-memory">6.8</b>/8 GB</span>
+                </div>
+                <div class="memory-track" aria-hidden="true">
+                  <span id="hud-memory-fill"></span>
+                </div>
+              </div>
+            </section>
+            <section
+              class="hud-window hud-data"
+              data-window="data"
+              aria-labelledby="data-title"
+            >
+              <header class="hud-titlebar">
+                <h2 id="data-title">
+                  <i class="hud-indicator" aria-hidden="true"></i>DATA.STREAM
+                </h2>
+                <span class="hud-mount" aria-hidden="true">▪</span>
+              </header>
+              <div class="hud-body" id="data-content">
+                <div
+                  class="data-log"
+                  id="hud-data-log"
+                  aria-label="模拟数据批次日志"
+                >
+                  <p><span>0728</span>batch_028 → loaded</p>
+                  <p><span>0729</span>forward pass ... ok</p>
+                  <p><span>0730</span>gradients → synced</p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <button
+          id="animation-toggle"
+          class="animation-toggle"
+          type="button"
+          aria-label="暂停丹炉动画"
+          aria-pressed="false"
+          title="暂停 / 播放动画（空格）"
+        >
+          <svg class="pause-icon" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 3h3v10H4zm5 0h3v10H9z" fill="currentColor" />
+          </svg>
+          <svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 2v12l9-6z" fill="currentColor" />
+          </svg>
+        </button>
+        <span
+          id="animation-status"
+          class="sr-only"
+          role="status"
+          aria-live="polite"
+        ></span>
+      </section>
+      <div class="club-content">
+        <section
+          class="detail-section"
+          id="services"
+          tabindex="-1"
+          aria-labelledby="services-title"
+        >
+          <div class="section-heading">
+            <span class="section-index">01 / SERVICES</span>
+            <h2 id="services-title">正在运行的服务</h2>
+            <p>社团工具与应用</p>
+          </div>
+          <ul class="section-list" aria-label="服务列表">
+            <li>
+              <a class="section-panel service-entry" href="./hatchery">
+                <svg
+                  class="section-icon"
+                  viewBox="0 0 48 48"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M8 6h32v15H8zM8 27h32v15H8zM14 13h3M14 34h3M25 13h8M25 34h8"
+                  />
+                </svg>
+                <div>
+                  <h3>炼丹社 Hatchery AI 建站</h3>
+                  <p><code>./hatchery</code> · 社团 AI 建站服务</p>
+                </div>
+                <span class="placeholder-status">打开 ↗</span>
+              </a>
+            </li>
+          </ul>
+          <a class="back-link" href="#top">↑ 返回实验室</a>
+        </section>
+        <section
+          class="detail-section"
+          id="activities"
+          tabindex="-1"
+          aria-labelledby="activities-title"
+        >
+          <div class="section-heading">
+            <span class="section-index">02 / ACTIVITIES</span>
+            <h2 id="activities-title">社团活动</h2>
+            <p>交流 · 分享 · 共创</p>
+          </div>
+          <ul class="section-list" aria-label="活动列表">
+            <li class="section-panel">
+              <svg class="section-icon" viewBox="0 0 48 48" aria-hidden="true">
+                <path
+                  d="M5 8h25v21H14L5 38zM35 16h8v25l-8-7H23M12 16h11M12 22h7"
+                />
+              </svg>
+              <div>
+                <h3>下一场活动</h3>
+                <p>活动主题、时间与地点待补充</p>
+              </div>
+              <span class="placeholder-status">待公布</span>
+            </li>
+          </ul>
+          <a class="back-link" href="#top">↑ 返回实验室</a>
+        </section>
+        <section
+          class="detail-section join-section"
+          id="join"
+          tabindex="-1"
+          aria-labelledby="join-title"
+        >
+          <div class="join-copy">
+            <div class="section-heading">
+              <span class="section-index">03 / JOIN</span>
+              <h2 id="join-title">加入社团！</h2>
+              <p>扫码添加社长微信，加入社团</p>
+            </div>
+            <p class="join-note">点击图片查看原图，也可保存后在微信中识别</p>
+            <a
+              class="qr-save"
+              href="./assets/wechat-qr.jpg"
+              download="AIchemy-社长微信二维码.jpg"
+              >保存二维码 ↓</a
+            >
+          </div>
+          <a
+            class="wechat-code"
+            href="./assets/wechat-qr.jpg"
+            target="_blank"
+            rel="noopener"
+            aria-label="查看完整的社长微信二维码原图"
+          >
+            <img
+              src="./assets/wechat-qr.jpg"
+              width="880"
+              height="1443"
+              alt="社长微信二维码，使用微信扫一扫添加好友"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <a class="back-link" href="#top">↑ 返回实验室</a>
+        </section>
+        <section
+          class="detail-section community-section"
+          id="community"
+          tabindex="-1"
+          aria-labelledby="community-title"
+        >
+          <div class="section-heading">
+            <span class="section-index">04 / COMMUNITY</span>
+            <h2 id="community-title">社区</h2>
+            <p>友社 · 友链 · 一起研究</p>
+          </div>
+          <div class="community-groups">
+            <section
+              class="community-group community-friends"
+              aria-labelledby="friends-title"
+            >
+              <header>
+                <span class="community-mark" aria-hidden="true">◈</span>
+                <h3 id="friends-title">友社</h3>
+                <small>并肩探索</small>
+              </header>
+              <a
+                class="community-link"
+                href="https://ht2.club/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>
+                  <strong>ht2.club</strong>
+                  <small>装机 · 回收 · CS 赛事 · 社区</small>
+                </span>
+                <span class="community-arrow" aria-hidden="true">↗</span>
+              </a>
+            </section>
+            <section
+              class="community-group community-links"
+              aria-labelledby="links-title"
+            >
+              <header>
+                <span class="community-mark" aria-hidden="true">⟷</span>
+                <h3 id="links-title">友链</h3>
+                <small>连接更多同路人</small>
+              </header>
+              <div class="community-link-list">
+                <a
+                  class="community-link"
+                  href="https://groovin.cn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>
+                    <strong>groovin.cn</strong>
+                    <small>正在生长的 Web 站点目录</small>
+                  </span>
+                  <span class="community-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a
+                  class="community-link"
+                  href="https://mizusumi.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>
+                    <strong>mizusumi.com</strong>
+                    <small>创意项目与网站导航</small>
+                  </span>
+                  <span class="community-arrow" aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </section>
+          </div>
+          <a class="back-link" href="#top">↑ 返回实验室</a>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
